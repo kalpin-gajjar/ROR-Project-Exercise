@@ -1,0 +1,78 @@
+<%= form_with model: article do |form| %>
+
+    <div>
+        <%= form.label :author_name %><br>
+        <%= form.text_field :author_name %><br>
+        <% article.errors.full_messages_for(:author_name).each do |message| %>
+            <div><%= message %></div>
+        <% end %><br>
+    </div>
+
+    <div>
+        <%= form.label :gender %>: Male/Female/Other<br>
+        <%= form.text_field :gender %><br>
+        <% article.errors.full_messages_for(:gender).each do |message| %>
+            <div><%= message %></div>
+        <% end %><br>
+    </div>
+
+    <div>
+        <%= form.label :age %><br>
+        <%= form.text_field :age %><br>
+        <% article.errors.full_messages_for(:age).each do |message| %>
+            <div><%= message %></div>
+        <% end %><br>
+    </div>
+
+    <div>
+        <%= form.label :title %><br>
+        <%= form.text_field :title %><br>
+        <% article.errors.full_messages_for(:title).each do |message| %>
+            <div><%= message %></div>
+        <% end %><br>
+    </div>
+
+    <div>
+        <%= form.label :body %><br>
+        <%= form.text_area :body %><br>
+        <% article.errors.full_messages_for(:body).each do |message| %>
+            <div><%= message %></div>
+        <% end %><br>
+    </div>
+
+    <div>
+        <%= form.label :email %><br>
+        <%= form.text_field :email %><br>
+        <%= form.label :email_confirmation %><br>
+        <%= form.text_field :email_confirmation %><br>
+        <% article.errors.full_messages_for(:email_confirmation).each do |message| %>
+            <div><%= message %></div>
+        <% end %><br>
+    </div>
+
+    <div>
+        <%= form.label :start_date %>
+        <%= form.date_field :start_date %><br>
+    </div>
+
+    <div>
+        <%= form.label :end_date %>
+        <%= form.date_field :end_date %><br>
+        <% article.errors.full_messages_for(:end_date).each do |message| %>
+            <div><%= message %></div>
+        <% end %><br>
+    </div>
+
+    <div>
+        <%= form.check_box :user_agreement %>
+        <%= form.label "Terms and Conditions" %><br>
+        <% article.errors.full_messages_for(:user_agreement).each do |message| %>
+            <div><%= message %></div>
+        <% end %><br>
+    </div>
+    
+    <br>
+    <div>
+        <%= form.submit %>
+    </div>
+<% end %>
