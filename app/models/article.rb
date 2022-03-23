@@ -24,4 +24,37 @@ class Article < ApplicationRecord
     validates_each :title do |record, attr, value|
         record.errors.add(attr, 'must start with upper case') if value =~ /\A[[:lower:]]/
     end
+
+    before_validation :remove_whitespaces
+    after_validation :add_author_name
+    before_create :add_status
+    before_update :add_status_edited
+    after_create :after_create_callback
+    after_update :after_update_callback
+
+    private
+
+    def remove_whitespaces
+        title.strip!
+    end
+
+    def add_author_name
+        self.author_name = "Kalpin"
+    end
+
+    def add_status
+        self.status = ""
+    end
+
+    def add_status_edited
+        self.status = "Edited"
+    end
+
+    def after_create_callback
+        p "This is called after a record is created."
+    end
+
+    def after_update_callback
+        p "This is called after a record is updated."
+    end
 end
